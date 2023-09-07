@@ -155,5 +155,4 @@ H1: Tagihan kesehatan usia dibawah 40 lebih kecil dari tagihan kesehatan dibatas
 Yang mana  nilai t statistik adalah sebesar -4,6125 dengan nilai p value sebesar 0,00 dibawah alpha sebesar 0,05.
 5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40?
 6) Seseorang dengan usia diatas 40 tahun lebih mungkin memiliki tagihan diatas rata-rata daripada yang dibawah 40 tahun. Hal ini ditunjukan oleh probabilitas usia diatas 40 tahun lebih mungkin memiliki tagihan diatas rata-rata  adalah 40%, sedangkan untuk usia dibawah 40 tahun adalah 22%. (tagihan rata-rata dari 200 sampel uang diambil adalah 13.236).
-7) Variabel apa yang memiliki hubungan paling kuat?
-8) Umur dan tagihan kesehatan memiliki hubungan paling kuat. Hal tersebut ditunjukan oleh heat map korelasi yang paling terang dibanding kombinasi variabel lainnya.
+7) Umur dan tagihan kesehatan memiliki hubungan paling kuat. Hal tersebut ditunjukan oleh heat map korelasi yang paling terang dibanding kombinasi variabel lainnya.
