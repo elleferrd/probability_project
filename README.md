@@ -7,7 +7,7 @@ Projek ini bertujuan untuk mengeksplorasi hubungan antara demografi, lifestyle d
 Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, gaya hidup dan tagihan kesehatan, yaitu:
 1) Apakah terdapat hubungan antara usia dan berat badan?
 2) Apakah perokok cenderung memiliki tagihan kesehatan lebih mahal daripada non perokok?
-3) Apakah terdapat hubngan antarai BMI dam biaya tagihan kesehatan
+3) Apakah terdapat hubungan antara BMI dan biaya tagihan kesehatan
 4) Apakah terdapat hubungan antara usia dan biaya tagihan kesehatan?
 5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40?
 6) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
@@ -26,6 +26,7 @@ Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, 
          from scipy.stats import t
          from scipy.stats import f_oneway
          from scipy.stats import ttest_ind
+         from scipy import stats
          import seaborn as sns
          from scipy.stats.stats import pearsonr
          #load data
@@ -81,7 +82,7 @@ Langkah keempat melakukan random sampling data yang akan diolah
 
 ![nomor1](https://github.com/elleferrd/probability_project/assets/137087598/6cee6fac-cd02-41a4-af63-751c2a68b4ab)
    
-2) Apakah perokok cenderung memiliki tagihan kesehatan lebih mahal daripada non perokok? menggunakan cara pada 1) dan uji hipotesis
+2) Apakah perokok cenderung memiliki tagihan kesehatan lebih mahal daripada non perokok? menggunakan scatter plot dan uji hipotesis
 
         #contoh uji hipotesis ho tagihan perokok = tagihan non perokok, h1 tagihan perokok < tagihan non perokok
         #ambil data numerik yang akan diuji
@@ -89,17 +90,53 @@ Langkah keempat melakukan random sampling data yang akan diolah
         nonsmoke = insurance[insurance['smoker'] == 'no']
         smoke = smoke["charges"]
         nonsmoke = nonsmoke["charges"]
-        #uji t
+        #uji t less than
         stat, p = ttest_ind(young, old, equal_var=False, alternative='less') # eaual_var= False karena varians kedua populasi berbeda
         #Interpretasi Hasil
         print('Statistics = %.4f, p = %.4f' % (stat, p)) 
 
+3) Apakah terdapat hubungan antara BMI dan biaya tagihan kesehatan? menggunakan cara yang digunakan pada research question 1 dan uji kausalitas (uji t) dan melakukan eksplorasi kondisi
 
-4) Apakah terdapat hubngan antarai BMI dam biaya tagihan kesehatan
-5) Apakah terdapat hubungan antara usia dan biaya tagihan kesehatan?
-6) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40?
-7) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
-8) Variabel apa yang memiliki hubungan paling kuat?
-
+        #eksplorasi kondisi sampel seluruhnya perokok atau non perokok
+        #filter data smoker and non smoker
+        test = insurance.set_index("smoker")
+        test2 = test.loc[['yes']]
+        test3 = test.loc[['no']]
+        #contoh uji hipotesis ho tagihan perokok = tagihan non perokok, h1 tagihan perokok < tagihan non perokok
+        stats.ttest_ind(insurance["age"], insurance["charges"])
+        stats.ttest_ind(test2["age"], test2["charges"])
+        stats.ttest_ind(test3["age"], test3["charges"])
+  
+4) Apakah terdapat hubungan antara usia dan biaya tagihan kesehatan? menggunakan cara yang digunakan pada research question nomor 3
+  
+5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40? menggunakan uji hipotesis yang dilakukan pada research question nomor 2
+   
+6) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
+      #menghitung rata-rata
+      rerata=insurance['charges'].mean()
+      #menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
+      count = 0
+      count2 = 0
+      for item in young:
+         if item>rerata:
+             count += 1
+      probabilitas_young =count/young.count() 
+     for item in old:
+         if item>rerata:
+             count2 += 1
+      probabilitas_old = count2/old.count()
+      probabilitas_young, probabilitas_old
+      prob = {
+          'Kelompok': ['<=40 tahun', '>40 tahun'],
+          'jumlah yang tagihannya diatas rata-rata': [count, count2],
+          'jumlah data': [young.count(), old.count()],
+          'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
+      }
+   
+7) Variabel apa yang memiliki hubungan paling kuat? menggunakan heatmap korelasi
+    
+     forheatmap = insurance[['age', 'bmi', 'charges']]
+     corr = forheatmap.corr(method="pearson")
+     sns.heatmap(corr)
 
 # Hasil
