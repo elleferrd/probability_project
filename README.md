@@ -1,6 +1,4 @@
 # probability_project
-
-# Introduction
 Projek ini bertujuan untuk mengeksplorasi hubungan antara demografi, lifestyle dan tagihan kesehatan. Variabel yang dieksplorasi adalah usia, gender, BMI, merokok dan tagihan kesehatan.
 
 # Research Question
