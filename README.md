@@ -15,7 +15,7 @@ Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, 
 
 # Pengolahan Data
 
- Langkah pertama adalah import library, load data, understanding data dan data manipulation
+ Langkah pertama adalah import library, load data, dan data manipulation
 
          #import libraries
          import pandas as pd
@@ -37,32 +37,31 @@ Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, 
          insurance['ageGroup'] = insurance['age'].apply(lambda x: "60s" if x>=60 else "50s" if x>=50 else "40s" if x>=40 else "30s" if x>=30 else "20s" if x>=20 else "10s")
 
  Output:
+ 
 ![kategori data](https://github.com/elleferrd/probability_project/assets/137087598/e992c05d-141f-4744-a6d5-c93b65b74dd4)
 
-         
-         #summarize data dengan pivot table
-         umurbmi =insurance.pivot_table(values=["charges"], index = ["ageGroup"], columns=["BMI"],aggfunc='count')
-         #mendeskripsikan data alah satu contoh)
-         BM = insurance[['BMI', 'charges']]
-         rerata = BM.groupby('BMI').mean('charges')
-         rerata.columns=["rata-rata"]
-         deviasi = BM.groupby('BMI').std()
-         deviasi.columns=["standarDeviasi"]
-         mini = BM.groupby('BMI').min()
-         mini.columns=["nilaiMinimum"]
-         maks = BM.groupby('BMI').max()
-         maks.columns=["nilaiMaksimum"]
-         sebarandata = pd.DataFrame(insurance.groupby('BMI')['charges'].size())
-         sebarandata.columns =["jumlah"]
-         sebarandata['proporsi'] = sebarandata['jumlah'].apply(lambda x: x/(sebarandata['jumlah'].sum()))
+Langkah kedua adalah menghitung frekuensi kemuculan data per kategori untuk diolah kembali di excel
 
-         #mengelompokan data
-         
-         #mengetahui karakteristik data
-         agebmi = insurance.groupby("ageGroup")["bmi"].agg(["min", "max", "mean", "var", "std"]) #data
+         #summarize data dengan pivot table (salah satu contoh)
+         umurbmi =insurance.pivot_table(values=["charges"], index = ["ageGroup"], columns=["BMI"],aggfunc='count')
+
+output:
+
+![kategori data](https://github.com/elleferrd/probability_project/assets/137087598/2b952a26-d36c-46f9-91e7-908ce9cb3366)
+
+
+Langkah ketiga adalah pemahaman data dengan cara mendeskripsikan data
+
+         #mengetahui karakteristik data (contoh)
+         agebmi = insurance.groupby("ageGroup")["bmi"].agg(["min", "max", "mean", "var", "std"]) 
+
+Langkah keempat melakukan random sampling data yang akan diolah
+
          #random sampling 200 data
          insurance =insurance.sample(n=200, random_state=42)
-         
+
+ Langkah kelima adalah menjawab seluruh research question.
+ 
 
 
 # Hasil
