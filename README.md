@@ -15,15 +15,17 @@ Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, 
 
 # Pengolahan Data
 
-Persiapan 
+ Langkah pertama adalah load data, import library dan filter data
 
-         #load data
-          import pandas as pd
-          import numpy as np
-          import libraries
-          import matplotlib.pyplot as plt
-          from matplotlib.pyplot import figure
-          from scipy.stats import t
-          import seaborn as sns
+         import pandas as pd
+         import numpy as np
+         import libraries
+         import matplotlib.pyplot as plt
+         from matplotlib.pyplot import figure
+         from scipy.stats import t
+         import seaborn as sns
+
+
+
 
 # Hasil
