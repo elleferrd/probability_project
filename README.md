@@ -112,31 +112,48 @@ Langkah keempat melakukan random sampling data yang akan diolah
 5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40? menggunakan uji hipotesis yang dilakukan pada research question nomor 2
    
 6) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
-      #menghitung rata-rata
-      rerata=insurance['charges'].mean()
-      #menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
-      count = 0
-      count2 = 0
-      for item in young:
-         if item>rerata:
-             count += 1
-      probabilitas_young =count/young.count() 
-     for item in old:
-         if item>rerata:
-             count2 += 1
-      probabilitas_old = count2/old.count()
-      probabilitas_young, probabilitas_old
-      prob = {
-          'Kelompok': ['<=40 tahun', '>40 tahun'],
-          'jumlah yang tagihannya diatas rata-rata': [count, count2],
-          'jumlah data': [young.count(), old.count()],
-          'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
-      }
-   
+        #menghitung rata-rata
+        rerata=insurance['charges'].mean()
+        #menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
+        count = 0
+        count2 = 0
+        for item in young:
+           if item>rerata:
+               count += 1
+        probabilitas_young =count/young.count() 
+       for item in old:
+           if item>rerata:
+               count2 += 1
+        probabilitas_old = count2/old.count()
+        probabilitas_young, probabilitas_old
+        prob = {
+            'Kelompok': ['<=40 tahun', '>40 tahun'],
+            'jumlah yang tagihannya diatas rata-rata': [count, count2],
+            'jumlah data': [young.count(), old.count()],
+            'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
+        }
+     
 7) Variabel apa yang memiliki hubungan paling kuat? menggunakan heatmap korelasi
     
-     forheatmap = insurance[['age', 'bmi', 'charges']]
-     corr = forheatmap.corr(method="pearson")
-     sns.heatmap(corr)
+       forheatmap = insurance[['age', 'bmi', 'charges']]
+       corr = forheatmap.corr(method="pearson")
+       sns.heatmap(corr)
+
+![gambar1](https://github.com/elleferrd/probability_project/assets/137087598/69c4eacc-65ee-4cc8-9957-bebf5fc8151f)
+
 
 # Hasil
+1) Usia memiliki hubungan yang lemah dengan bmi (all data)
+2) Merokok memiliki hubungan dengan tagihan kesehatan dimana perokok memiliki tagihan kesehatan lebih mahal daripada non perokok. Hasil uji hipotesis
+H0: Tagihan kesehatan perokok sama dengan tagihan kesehatan non perokok
+H1: Tagihan kesehatan perokok lebih kecil dari tagihan kesehatan non perokok
+menunjukan hasil yang signikan dengan nilai t statistik sebesar -4,612 dan pvalue sebesar 0,00 yaitu dibawah alpha 0,05.
+3) Terdapat hubungan yang kuat antara bmi dan biaya tagihan kesehatan apabila diketahui sampel adalah perokok, semakin tinggi BMI seorang perokok maka semakin mahal biaya tagihan kesehatan. Namun, hubungan bmi dengan biaya tagihan tergolong sangat lemah untuk non-perokok. Meskipun demikian, diketahui bahwa bmi memiliki pengaruh terhadap tagihan kesehatan yang ditunjukan oleh p value pada uji kausalitas yaiu 0,00 dibawah alpha sebesar 0,05.
+4) Terdapat hubungan anatra usia dan biaya tagihan kesehatan, yang mana semakin tinggi tingkat usia maka semakin mahal pula biaya tagihan kesehatan. Hal tersebut ditunjukan oleh hasil uji hipotesis dari:
+H0: Tagihan kesehatan usia dibawah 40 sama dengan tagihan kesehatan usia diatas 40
+H1: Tagihan kesehatan usia dibawah 40 lebih kecil dari tagihan kesehatan dibatas 40
+Yang mana  nilai t statistik adalah sebesar -4,6125 dengan nilai p value sebesar 0,00 dibawah alpha sebesar 0,05.
+5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40?
+6) Seseorang dengan usia diatas 40 tahun lebih mungkin memiliki tagihan diatas rata-rata daripada yang dibawah 40 tahun. Hal ini ditunjukan oleh probabilitas usia diatas 40 tahun lebih mungkin memiliki tagihan diatas rata-rata  adalah 40%, sedangkan untuk usia dibawah 40 tahun adalah 22%. (tagihan rata-rata dari 200 sampel uang diambil adalah 13.236).
+7) Variabel apa yang memiliki hubungan paling kuat?
+8) Umur dan tagihan kesehatan memiliki hubungan paling kuat. Hal tersebut ditunjukan oleh heat map korelasi yang paling terang dibanding kombinasi variabel lainnya.
