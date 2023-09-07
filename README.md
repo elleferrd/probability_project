@@ -25,7 +25,9 @@ Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, 
          from matplotlib.pyplot import figure
          from scipy.stats import t
          from scipy.stats import f_oneway
+         from scipy.stats import ttest_ind
          import seaborn as sns
+         from scipy.stats.stats import pearsonr
          #load data
          insurance = pd.read_csv("TEST\datainsurance.csv")
          
@@ -55,13 +57,49 @@ Langkah ketiga adalah pemahaman data dengan cara mendeskripsikan data
          #mengetahui karakteristik data (contoh)
          agebmi = insurance.groupby("ageGroup")["bmi"].agg(["min", "max", "mean", "var", "std"]) 
 
+ Output:
+        
+![kategori data](https://github.com/elleferrd/probability_project/assets/137087598/e0226e16-6448-488a-b1d1-d24ab56b926a)
+
 Langkah keempat melakukan random sampling data yang akan diolah
 
          #random sampling 200 data
          insurance =insurance.sample(n=200, random_state=42)
 
  Langkah kelima adalah menjawab seluruh research question.
- 
+
+1) Apakah terdapat hubungan antara usia dan berat badan? menggunakan scatterplot & uji korelasi
+
+         #melihat visual sebaran data (scatterplot)
+         sns.scatterplot(data=insurance, x ="bmi", y = "charges")
+         #uji korelasi
+         correlation_coefficient, p_value = pearsonr(insurance["age"], insurance["charges"])
+         rounded_correlation = round(correlation_coefficient, 3)
+         rounded_p_value = round(p_value, 20)
+         print("Pearson Correlation Coefficient:", rounded_correlation)
+         print("P-value:", rounded_p_value)
+
+![nomor1](https://github.com/elleferrd/probability_project/assets/137087598/6cee6fac-cd02-41a4-af63-751c2a68b4ab)
+   
+2) Apakah perokok cenderung memiliki tagihan kesehatan lebih mahal daripada non perokok? menggunakan cara pada 1) dan uji hipotesis
+
+        #contoh uji hipotesis ho tagihan perokok = tagihan non perokok, h1 tagihan perokok < tagihan non perokok
+        #ambil data numerik yang akan diuji
+        smoke = insurance[insurance['smoker'] == 'yes']
+        nonsmoke = insurance[insurance['smoker'] == 'no']
+        smoke = smoke["charges"]
+        nonsmoke = nonsmoke["charges"]
+        #uji t
+        stat, p = ttest_ind(young, old, equal_var=False, alternative='less') # eaual_var= False karena varians kedua populasi berbeda
+        #Interpretasi Hasil
+        print('Statistics = %.4f, p = %.4f' % (stat, p)) 
+
+
+4) Apakah terdapat hubngan antarai BMI dam biaya tagihan kesehatan
+5) Apakah terdapat hubungan antara usia dan biaya tagihan kesehatan?
+6) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40?
+7) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
+8) Variabel apa yang memiliki hubungan paling kuat?
 
 
 # Hasil
