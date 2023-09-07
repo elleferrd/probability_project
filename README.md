@@ -1,6 +1,11 @@
 # probability_project
 Projek ini bertujuan untuk mengeksplorasi hubungan antara demografi, lifestyle dan tagihan kesehatan. Variabel yang dieksplorasi adalah usia, gender, BMI, merokok dan tagihan kesehatan.
 
+Berdasarkan literatur, Demografi dan gaya hidup dapat mempengaruhi kesehatan seseorang. Semakin bertambahnya usia, metabolisme melambat dan sistem imun manusia melemah, sehingga lebih mudah terserang penyakit. Selain dari usia, jenis kelamin juga memiliki pengaruh terhadap kesehatan seseorang, yang mana terdapat beberapa penyakit yang lebih rentan bagi pria atau wanita. Seperti contohnya penyakit jantung, parkinson, melanoma, kanker pankreas, batu ginjal dan abdominal aortic anaerysm lebih rentan diderita oleh pria. Sedangkan, kanker rahim dan payudara diderita oleh wanita. Sebagai tambahan, statistik kesehatan di berbagai negara menunjukkan harapan hidup wanita lebih tinggi dari pria berdasarkan data historis.
+
+Selain faktor usia dan jenis kelamin, faktor gaya hidup seperti pola diet dan kebiasaan merokok dapat menyebabkan beberapa macam penyakit. Seperti contohnya seseorang yang obesistas memiliki risiko yang lebih tinggi terserang penyakit jatung, tekanan darah tinggi, diabetes, gallstone, masalah pernapasan dan kanker. Pada saat  yang sama, perokok lebih rentan terhadap penyakin kanker, penyakit jantung, struk, paru-paru, diabetes, chronic obstructive pulmonary disease yang meliputi emphysema dan bronkitis kronis. 
+
+
 # Research Question
 Proyek eksplorasi data ini akan menjawab beberapa pertanyaan terkait demografi, gaya hidup dan tagihan kesehatan, yaitu:
 1) Apakah terdapat hubungan antara usia dan berat badan?
