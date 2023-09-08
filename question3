@@ -7,7 +7,7 @@ rounded_p_value = round(p_value, 20)
 print("Pearson Correlation Coefficient:", rounded_correlation)
 print("P-value:", rounded_p_value)
 #uji kausalitas
-stats.ttest_ind(insurance["age"], insurance["charges"])
+stats.ttest_ind(insurance["bmi"], insurance["charges"])
 
 #eksplorasi kondisi sampel seluruhnya perokok atau non perokok
 #filter data smoker dan non smoker
