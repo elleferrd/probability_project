@@ -75,9 +75,9 @@ Langkah keempat melakukan random sampling data yang akan diolah
 1) Apakah terdapat hubungan antara usia dan berat badan? menggunakan scatterplot & uji korelasi
 
          #melihat visual sebaran data (scatterplot)
-         sns.scatterplot(data=insurance, x ="bmi", y = "charges")
+         sns.scatterplot(data=insurance, x ="age", y = "bmi")
          #uji korelasi
-         correlation_coefficient, p_value = pearsonr(insurance["age"], insurance["charges"])
+         correlation_coefficient, p_value = pearsonr(insurance["age"], insurance["bmi"])
          rounded_correlation = round(correlation_coefficient, 3)
          rounded_p_value = round(p_value, 20)
          print("Pearson Correlation Coefficient:", rounded_correlation)
