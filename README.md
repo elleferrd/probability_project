@@ -116,20 +116,6 @@ Langkah keempat melakukan random sampling data yang akan diolah
    
 6) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
 
-         #import libraries
-         import pandas as pd
-         import numpy as np
-         import libraries
-         import matplotlib.pyplot as plt
-         from matplotlib.pyplot import figure
-         from scipy.stats import t
-         from scipy.stats import f_oneway
-         from scipy.stats import ttest_ind
-         from scipy import stats
-         import seaborn as sns
-         from scipy.stats.stats import pearsonr
-         #load data
-         insurance = pd.read_csv("TEST\datainsurance.csv")
    
           #menghitung rata-rata
           rerata=insurance['charges'].mean()
