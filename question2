@@ -1,0 +1,20 @@
+#melihat visual sebaran data (scatterplot)
+sns.scatterplot(data=insurance, x ="smoker", y = "charges")
+
+#uji korelasi
+correlation_coefficient, p_value = pearsonr(insurance["smoker"], insurance["charges"])
+rounded_correlation = round(correlation_coefficient, 3)
+rounded_p_value = round(p_value, 20)
+print("Pearson Correlation Coefficient:", rounded_correlation)
+print("P-value:", rounded_p_value)
+
+#uji hipotesis
+#ambil data numerik yang akan diuji
+smoke = insurance[insurance['smoker'] == 'yes']
+nonsmoke = insurance[insurance['smoker'] == 'no']
+smoke = smoke["charges"]
+nonsmoke = nonsmoke["charges"]
+#uji t less than
+stat, p = ttest_ind(young, old, equal_var=False, alternative='less') # eaual_var= False karena varians kedua populasi berbeda
+#Interpretasi Hasil
+print('Statistics = %.4f, p = %.4f' % (stat, p)) 
