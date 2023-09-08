@@ -115,27 +115,27 @@ Langkah keempat melakukan random sampling data yang akan diolah
 5) Apakah tagihan kesehatan usia >40 lebih mahal daripada usia <40? menggunakan uji hipotesis yang dilakukan pada research question nomor 2
    
 6) Mana yang lebih mungkin terjadi seseorang dengan usia diatas atau dibawah 40 mendapatkan tagihan lebih besar dari rata-rata?
-        #menghitung rata-rata
-        rerata=insurance['charges'].mean()
-        #menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
-        count = 0
-        count2 = 0
-        for item in young:
-           if item>rerata:
-               count += 1
-        probabilitas_young =count/young.count() 
-       for item in old:
-           if item>rerata:
-               count2 += 1
-        probabilitas_old = count2/old.count()
-        probabilitas_young, probabilitas_old
-        prob = {
-            'Kelompok': ['<=40 tahun', '>40 tahun'],
-            'jumlah yang tagihannya diatas rata-rata': [count, count2],
-            'jumlah data': [young.count(), old.count()],
-            'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
-        }
-     
+         #menghitung rata-rata
+         rerata=insurance['charges'].mean()
+         #menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
+         count = 0
+         count2 = 0
+         for item in young:
+            if item>rerata:
+                count += 1
+         probabilitas_young =count/young.count() 
+        for item in old:
+            if item>rerata:
+                count2 += 1
+         probabilitas_old = count2/old.count()
+         probabilitas_young, probabilitas_old
+         prob = {
+             'Kelompok': ['<=40 tahun', '>40 tahun'],
+             'jumlah yang tagihannya diatas rata-rata': [count, count2],
+             'jumlah data': [young.count(), old.count()],
+             'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
+         }
+      
 7) Variabel apa yang memiliki hubungan paling kuat? menggunakan heatmap korelasi
     
        forheatmap = insurance[['age', 'bmi', 'charges']]
