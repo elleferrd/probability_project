@@ -1,0 +1,41 @@
+#melihat visual sebaran data (scatterplot)
+sns.scatterplot(data=insurance, x ="bmi", y = "charges")
+#uji korelasi
+correlation_coefficient, p_value = pearsonr(insurance["bmi"], insurance["charges"])
+rounded_correlation = round(correlation_coefficient, 3)
+rounded_p_value = round(p_value, 20)
+print("Pearson Correlation Coefficient:", rounded_correlation)
+print("P-value:", rounded_p_value)
+#uji kausalitas
+stats.ttest_ind(insurance["age"], insurance["charges"])
+
+#eksplorasi kondisi sampel seluruhnya perokok atau non perokok
+#filter data smoker dan non smoker
+test = insurance.set_index("smoker")
+test2 = test.loc[['yes']]
+test3 = test.loc[['no']]
+
+
+#melihat visual sebaran data (scatterplot)
+sns.scatterplot(data=test2, x ="bmi", y = "charges")
+#uji korelasi
+correlation_coefficient, p_value = pearsonr(test2["bmi"], test2["charges"])
+rounded_correlation = round(correlation_coefficient, 3)
+rounded_p_value = round(p_value, 20)
+print("Pearson Correlation Coefficient:", rounded_correlation)
+print("P-value:", rounded_p_value)
+#uji kausalitas
+stats.ttest_ind(test2["age"], test2["charges"])
+
+#melihat visual sebaran data (scatterplot)
+sns.scatterplot(data=test3, x ="bmi", y = "charges")
+#uji korelasi
+correlation_coefficient, p_value = pearsonr(test3["bmi"], test3["charges"])
+rounded_correlation = round(correlation_coefficient, 3)
+rounded_p_value = round(p_value, 20)
+print("Pearson Correlation Coefficient:", rounded_correlation)
+print("P-value:", rounded_p_value)
+#uji kausalitas
+stats.ttest_ind(test3["age"], test3["charges"])
+
+
