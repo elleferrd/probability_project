@@ -1,0 +1,10 @@
+
+#ambil data numerik yang akan diuji
+young = insurance[insurance['age'] <=40]
+old = insurance[insurance['smoker'] >40]
+young = young["charges"]
+old = old["charges"]
+ #uji t less than
+ stat, p = ttest_ind(young, old, equal_var=False, alternative='less') # equal_var= False karena varians kedua populasi berbeda
+ #Interpretasi Hasil
+ print('Statistics = %.4f, p = %.4f' % (stat, p)) 
