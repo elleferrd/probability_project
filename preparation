@@ -1,0 +1,25 @@
+#import libraries
+import pandas as pd
+import numpy as np
+import libraries
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import figure
+from scipy.stats import t
+from scipy.stats import f_oneway
+from scipy.stats import ttest_ind
+from scipy import stats
+import seaborn as sns
+from scipy.stats.stats import pearsonr
+#load data
+insurance = pd.read_csv("TEST\datainsurance.csv") 
+#Data wraggling
+#Mengelompokan BMI & Usia
+insurance['BMI'] = insurance['bmi'].apply(lambda x: "Extremely Obese" if x>35 else "Obese" if x>=30 else "Overweight" if x>=25 else "Normal" if x>=18.5 else "Underweight")
+insurance['ageGroup'] = insurance['age'].apply(lambda x: "60s" if x>=60 else "50s" if x>=50 else "40s" if x>=40 else "30s" if x>=30 else "20s" if x>=20 else "10s")
+#mengetahui karakteristik data (contoh)
+agebmi = insurance.groupby("ageGroup")["bmi"].agg(["min", "max", "mean", "var", "std"]) 
+agecharges = insurance.groupby("ageGroup")["charges"].agg(["min", "max", "mean", "var", "std"])
+smokercharges = insurance.groupby("smoker")["charges"].agg(["min", "max", "mean", "var", "std"])
+bmicharges = insurance.groupby("bmi")["charges"].agg(["min", "max", "mean", "var", "std"])
+#random sampling 200 data
+insurance =insurance.sample(n=200, random_state=42)
