@@ -105,7 +105,7 @@ Langkah keempat melakukan random sampling data yang akan diolah
         test = insurance.set_index("smoker")
         test2 = test.loc[['yes']]
         test3 = test.loc[['no']]
-        #contoh uji hipotesis ho tagihan perokok = tagihan non perokok, h1 tagihan perokok < tagihan non perokok
+        #contoh uji kausalitas
         stats.ttest_ind(insurance["age"], insurance["charges"])
         stats.ttest_ind(test2["age"], test2["charges"])
         stats.ttest_ind(test3["age"], test3["charges"])
