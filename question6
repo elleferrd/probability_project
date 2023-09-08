@@ -1,0 +1,20 @@
+#menghitung rata-rata
+rerata=insurance['charges'].mean()
+#menghitung jumlah yang diatas rata-rata untuk usia <40 dan >40
+count = 0
+count2 = 0
+for item in young:
+  if item>rerata:
+      count += 1
+probabilitas_young =count/young.count() 
+for item in old:
+   if item>rerata:
+        count2 += 1
+probabilitas_old = count2/old.count()
+probabilitas_young, probabilitas_old
+prob = {
+       'Kelompok': ['<=40 tahun', '>40 tahun'],
+       'jumlah yang tagihannya diatas rata-rata': [count, count2],
+       'jumlah data': [young.count(), old.count()],
+       'probabilitas tagihan diatas rata-rata': [probabilitas_young, probabilitas_old]
+   }
