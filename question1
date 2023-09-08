@@ -1,0 +1,10 @@
+#melihat visual sebaran data (scatterplot)
+sns.scatterplot(data=insurance, x ="bmi", y = "charges")
+#uji korelasi
+correlation_coefficient, p_value = pearsonr(insurance["age"], insurance["charges"])
+rounded_correlation = round(correlation_coefficient, 3)
+rounded_p_value = round(p_value, 20)
+print("Pearson Correlation Coefficient:", rounded_correlation)
+print("P-value:", rounded_p_value)
+
+
