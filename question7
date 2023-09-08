@@ -1,0 +1,3 @@
+forheatmap = insurance[['age', 'bmi', 'charges']]
+corr = forheatmap.corr(method="pearson")
+sns.heatmap(corr)
