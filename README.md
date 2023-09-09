@@ -76,6 +76,12 @@ Langkah keempat melakukan random sampling data yang akan diolah
 
          #melihat visual sebaran data (scatterplot)
          sns.scatterplot(data=insurance, x ="age", y = "bmi")
+         #uji covariance
+         age = insurance['age']
+         bmi = insurance['bmi']
+         covariance_matrix = np.cov(age, bmi)
+         covariance_value = covariance_matrix[0, 1]
+         print(covariance_value)
          #uji korelasi
          correlation_coefficient, p_value = pearsonr(insurance["age"], insurance["bmi"])
          rounded_correlation = round(correlation_coefficient, 3)
