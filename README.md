@@ -154,7 +154,7 @@ Langkah keempat melakukan random sampling data yang akan diolah
 
 
 # Hasil
-1) Usia memiliki hubungan yang lemah dengan bmi (all data)
+1) Usia memiliki hubungan yang lemah dengan bmi
 2) Merokok memiliki hubungan dengan tagihan kesehatan dimana perokok memiliki tagihan kesehatan lebih mahal daripada non perokok. Hasil uji hipotesis
 H0: Tagihan kesehatan perokok sama dengan tagihan kesehatan non perokok
 H1: Tagihan kesehatan perokok lebih kecil dari tagihan kesehatan non perokok
