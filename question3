@@ -1,5 +1,11 @@
 #melihat visual sebaran data (scatterplot)
 sns.scatterplot(data=insurance, x ="bmi", y = "charges")
+#uji covariance
+bmi = insurance['bmi']
+charges = insurance ['charges']
+covariance_matrix = np.cov(bmi, charges)
+covariance_value = covariance_matrix[0, 1]
+print(covariance_value)
 #uji korelasi
 correlation_coefficient, p_value = pearsonr(insurance["bmi"], insurance["charges"])
 rounded_correlation = round(correlation_coefficient, 3)
